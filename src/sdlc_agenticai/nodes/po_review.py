@@ -12,3 +12,9 @@ class POReview:
         #state["user_story"] = user_story.content
         #st.write(st.session_state["state"])
         return {"po_review": po_review.content}
+    
+    def decide_next(self, state: State):
+        if state["po_review"] == "Approved":
+            return "create_design_documents"
+        else:
+            return "create_user_story"

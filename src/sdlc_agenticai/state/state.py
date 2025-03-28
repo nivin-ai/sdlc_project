@@ -8,7 +8,7 @@ class State(TypedDict):
     user_requirement: str
     user_story: str
     po_review: str
-    design_doc: str
+    design_documents: str
     design_review: str
     generated_code: str
     code_review: str

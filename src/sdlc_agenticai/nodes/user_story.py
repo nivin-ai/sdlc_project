@@ -6,7 +6,7 @@ class UserStory:
         self.llm = llm
     def create_user_story(self, state: State)->dict:
         #st.write(f"node: user story,  graph state: {state}")
-        user_story =  self.llm.invoke(f"Create a user story for the following requirement: {state['user_requirement']}")
+        user_story =  self.llm.invoke(f"Create a user story for the following requirement: {state['user_requirement']}. Consider the following feedback to create better user stories: {state["po_review"]}.")
         #st.write(user_story.content)
         st.session_state["state"]["user_story"] = user_story.content
         #state["user_story"] = user_story.content
