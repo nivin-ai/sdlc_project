@@ -9,5 +9,5 @@ class DisplayResult:
     def display_result(self):
         # for event in self.graph.invoke({"user_requirement": st.session_state["state"]["user_requirement"]}):
         #     st.write(event)
-         for event in self.graph.invoke(st.session_state["state"]):
+         for event in self.graph.stream(st.session_state["state"]):
              st.write(f"event: {event}")

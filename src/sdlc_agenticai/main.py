@@ -34,7 +34,7 @@ def load_sldc_agent():
     if st.session_state["user_controls"]["GROQ_API_KEY"] != "":
         groq_llm = GroqLLM(st.session_state["user_controls"])
         llm = groq_llm.get_llm_model()
-        st.sidebar.write(f"LLM has been fetched: {llm}")
+        st.sidebar.write(f"LLM has been fetched")
         graph_builder = GraphBuilder(llm=llm)
         st.sidebar.write(f"Graph builder instance created")
         try:

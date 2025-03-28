@@ -28,7 +28,7 @@ class LoadUI:
         model_options = self.config.get_llm_options()
         groq_model = st.sidebar.selectbox("Groq Model", model_options)
         st.session_state["user_controls"]["GROQ_MODEL"] = groq_model
-        st.sidebar.write(st.session_state)
+        #st.sidebar.write(st.session_state)
 
 
 
