@@ -13,10 +13,12 @@ class LoadUI:
 
         # Text area for app description
         app_description = st.text_area("describe what you want to create")
+        st.session_state["state"]["user_requirement"] = app_description
 
         # button
         if st.button("create"):
-            st.write("on it!")
+            with st.spinner("working on it..."):
+                st.write("model will respond here")
 
     def load_sidebar(self):
         # Sidebar for API key and model selection
