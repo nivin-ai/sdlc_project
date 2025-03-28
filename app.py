@@ -1,5 +1,4 @@
-from src.sdlc_agenticai.ui.streamlitui.load_ui import LoadUI
+from src.sdlc_agenticai.main import load_sldc_agent
 
 if __name__ == '__main__':
-    ui = LoadUI()
-    ui.load_ui()
+    load_sldc_agent()
