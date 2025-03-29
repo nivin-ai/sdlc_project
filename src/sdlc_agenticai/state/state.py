@@ -15,3 +15,5 @@ class State(TypedDict):
     security_review: str
     test_cases: str
     test_cases_review: str
+    qa_test_review: str
+    deployable_code: str

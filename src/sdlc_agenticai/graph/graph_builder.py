@@ -8,6 +8,9 @@ from src.sdlc_agenticai.nodes.generate_code import GenerateCode
 from src.sdlc_agenticai.nodes.code_review import CodeReview
 from src.sdlc_agenticai.nodes.security_review import SecurityReview
 from src.sdlc_agenticai.nodes.test_cases import GenerateTestCases
+from src.sdlc_agenticai.nodes.test_case_review import TestCaseReview
+from src.sdlc_agenticai.nodes.qa_testing import QATesting
+from src.sdlc_agenticai.nodes.deploy_code import DeployCode
 
 class GraphBuilder:
     def __init__(self, llm):
@@ -23,6 +26,10 @@ class GraphBuilder:
         self.code_review_node = CodeReview(llm=self.llm)
         self.security_review_node = SecurityReview(llm=self.llm)
         self.test_cases_node = GenerateTestCases(llm=self.llm)
+        self.test_case_review_node = TestCaseReview(llm=self.llm)
+        self.qa_test_node = QATesting(llm=self.llm)
+        self.deploy_code_node = DeployCode(llm=self.llm)
+
         self.graph_builder.add_node("create_user_story", self.user_story_node.create_user_story)
         self.graph_builder.add_node("generate_po_review", self.po_review_node.po_review)
         self.graph_builder.add_node("create_design_documents", self.design_documents_node.generate_design_documents)
@@ -31,6 +38,9 @@ class GraphBuilder:
         self.graph_builder.add_node("generate_code_review", self.code_review_node.generate_code_review)
         self.graph_builder.add_node("generate_security_review", self.security_review_node.generate_security_review)
         self.graph_builder.add_node("generate_test_cases", self.test_cases_node.generate_test_cases)
+        self.graph_builder.add_node("generate_test_case_review", self.test_case_review_node.test_case_review)
+        self.graph_builder.add_node("perform_qa_test", self.qa_test_node.qa_testing)
+        self.graph_builder.add_node("deploy_code", self.deploy_code_node.deploy_code)
         
         self.graph_builder.add_edge(START, "create_user_story")
         self.graph_builder.add_edge("create_user_story", "generate_po_review")
@@ -40,5 +50,9 @@ class GraphBuilder:
         self.graph_builder.add_edge("generate_code", "generate_code_review")
         self.graph_builder.add_conditional_edges("generate_code_review", self.code_review_node.decide_next)
         self.graph_builder.add_conditional_edges("generate_security_review", self.security_review_node.decide_next)
+        self.graph_builder.add_edge("generate_test_cases", "generate_test_case_review")
+        self.graph_builder.add_conditional_edges("generate_test_case_review", self.test_case_review_node.decide_next)
+        self.graph_builder.add_conditional_edges("perform_qa_test", self.qa_test_node.decide_next)
+        self.graph_builder.add_edge("deploy_code", END)
         
         return self.graph_builder.compile()

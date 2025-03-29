@@ -18,6 +18,8 @@ def initialize_session():
             "security_review": "",
             "test_cases": "",
             "test_cases_review": "",
+            "qa_test_review": "",
+            "deployable_code": ""
         }
 
 def load_sldc_agent():
