@@ -11,7 +11,7 @@ class QATesting:
         return {"qa_test_review": qa_test_review.content}
     
     def decide_next(self, state: State):
-        if state["qa_test_review"] == "Approved":
+        if "Approved" in state["qa_test_review"]:
             st.sidebar.write("qa test passed")
             return ""
         else:

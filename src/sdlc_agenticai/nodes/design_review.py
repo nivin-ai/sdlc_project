@@ -11,7 +11,7 @@ class DesignReview:
         return {"design_review": design_review.content}
     
     def decide_next(self, state: State):
-        if state["design_review"] == "Approved":
+        if "Approved" in state["design_review"]:
             st.sidebar.write("design review passed")
             return "generate_code"
         else:

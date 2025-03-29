@@ -11,7 +11,7 @@ class POReview:
         return {"po_review": po_review.content}
     
     def decide_next(self, state: State):
-        if state["po_review"] == "Approved":
+        if "Approved" in state["po_review"]:
             st.sidebar.write("po review passed")
             return "create_design_documents"
         else:

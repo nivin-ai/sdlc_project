@@ -10,4 +10,4 @@ class DisplayResult:
         # for event in self.graph.invoke({"user_requirement": st.session_state["state"]["user_requirement"]}):
         #     st.write(event)
          for event in self.graph.stream(st.session_state["state"]):
-             st.write(f"event: {event}")
+             st.session_state["state"]["current_step"] = f"event: {event}"
