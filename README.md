@@ -1,5 +1,5 @@
 ---
-title: My App  # Replace with your app name
+title: SDLC Agent  # Replace with your app name
 emoji: 🚀      # An emoji to represent your app
 colorFrom: blue  # Gradient color start
 colorTo: purple  # Gradient color end
@@ -10,4 +10,4 @@ pinned: false
 ---
 
 # My App
-This is a Streamlit app deployed on Hugging Face Spaces.
+An agent built on langgraph to automate the SDLC workflow.
