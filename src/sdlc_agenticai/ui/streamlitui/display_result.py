@@ -11,3 +11,4 @@ class DisplayResult:
         #     st.write(event)
          for event in self.graph.stream(st.session_state["state"]):
              st.session_state["state"]["current_step"] = f"event: {event}"
+         st.write(st.session_state["state"]["deployable_code"])

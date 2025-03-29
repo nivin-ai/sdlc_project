@@ -6,7 +6,7 @@ class POReview:
         self.llm = llm
     def po_review(self, state: State)->dict:
         st.sidebar.write("performing po review on user story...")
-        po_review =  self.llm.invoke(f"review the following user story for the requirement {state['user_requirement']}: {state['user_story']}. If the user story is approved, simply return 'Approved' and NOTHING ELSE, do not give any suggestions. Else, return 'Failed' with feedback as to how to improve. Fail only if it is really bad.")
+        po_review =  self.llm.invoke(f"As a product owner, review the following user story for the requirement {state['user_requirement']}: {state['user_story']}. If the user story is approved, simply return 'Approved' and NOTHING ELSE, do not give any suggestions. Else, return 'Failed' with feedback as to how to improve.")
         st.session_state["state"]["po_review"] = po_review.content
         return {"po_review": po_review.content}
     

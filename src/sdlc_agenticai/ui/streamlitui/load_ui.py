@@ -16,9 +16,7 @@ class LoadUI:
         st.session_state["state"]["user_requirement"] = app_description
 
         # button
-        if st.button("create"):
-            with st.spinner("working on it..."):
-                st.write("model will respond here")
+        st.button("create")
 
     def load_sidebar(self):
         # Sidebar for API key and model selection

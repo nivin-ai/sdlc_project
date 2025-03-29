@@ -7,7 +7,7 @@ class DeployCode:
     def deploy_code(self, state: State)->dict:
         #for the time being, we are just printing the code
         st.sidebar.write("deploying code...")
-        deployable_code =  self.llm.invoke(f"Return ONLY the code part from the following: {state['generated_code']}. At the end, give simple instructions as to how to deploy and run this code.")
+        deployable_code =  self.llm.invoke(f"Return ONLY the code part from the following: {state['generated_code']}. At the end, give simple instructions as to how to deploy and run this code. If there are multiple code files, return all along with the file structure. Make sure that the full application logic is included and the app is functional.")
         st.session_state["state"]["deployable_code"] = deployable_code.content
-        st.write(deployable_code.content)
+        #st.write(deployable_code.content)
         return {"deployable_code": deployable_code.content}
